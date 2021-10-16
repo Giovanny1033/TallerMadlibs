@@ -10,27 +10,27 @@ import java.util.*
 
 class SecondActivity : AppCompatActivity() {
 
-    val actionBar = supportActionBar
-    val txtContent = findViewById(R.id.txtContent) as TextView
-    val btnGuardar = findViewById<Button>(R.id.btnSave)
-    val btnRead = findViewById<Button>(R.id.btnRead)
-    val btnThird = findViewById<Button>(R.id.btnThirdActivity)
-
-    val madHistory = arrayListOf<String>("Historia 1 Simple","Historia 2 Tarzan","Historia 3 University","Historia 4 Clothes","Historia 5 Dance",) //creamos el arreglo de datos
-    val madIds = arrayListOf<String>("Simple","Tarzan","University","Clothes","Dance")
-    var adapter: ArrayAdapter<String> ?= null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
-        adapter = ThirdActivity(this, R.layout.list_mad, madHistory)
+        //val actionBar = supportActionBar
+        val txtContent = findViewById<TextView>(R.id.txtContent)
+        val btnGuardar = findViewById<Button>(R.id.btnSave)
+        val btnRead = findViewById<Button>(R.id.btnRead)
+        val btnThird = findViewById<Button>(R.id.btnThirdActivity)
+
+        val madHistory = arrayListOf<String>("Historia 1 Simple","Historia 2 Tarzan","Historia 3 University","Historia 4 Clothes","Historia 5 Dance",) //creamos el arreglo de datos
+        val madIds = arrayListOf<String>("Simple","Tarzan","University","Clothes","Dance")
+        var adapter: ArrayAdapter<String> ?= null
+
+        adapter = ThirdActivity(this, R.layout.activity_third, madHistory)
         val madListView = findViewById<ListView>(R.id.madList)
         madListView.adapter = adapter
         madListView.setOnItemClickListener{ listview, listitem, index, id ->
             println("item: $listitem, index: $index, id: $id")
             Toast.makeText(this, "Seleccionaste la historia ${madHistory[index]}", Toast.LENGTH_SHORT).show()
-            openCharacterDetail(madIds[index])
+            openFileInput(madIds[index])
         }
 
         val btnAgregar = findViewById<Button>(R.id.btnAgregar)
@@ -49,9 +49,9 @@ class SecondActivity : AppCompatActivity() {
 
         btnThird.setOnClickListener { goToThirdActivity() }
 
-        actionBar!!.title = "Second Activity"
+       //actionBar!!.title = "Second Activity"
 
-        actionBar.setDisplayHomeAsUpEnabled(true)
+        //actionBar.setDisplayHomeAsUpEnabled(true)
 
     }
 
