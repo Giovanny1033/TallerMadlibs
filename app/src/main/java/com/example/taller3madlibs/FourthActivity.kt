@@ -19,9 +19,9 @@ class FourthActivity : AppCompatActivity() {
 
         setDescriptions()
 
-        characterName = intent.getStringExtra("MadLIB")!!
+        characterName = intent.getStringExtra("story")!!
 
-        showCharacter(characterName)
+        //showCharacter(characterName)
 
 
 
@@ -29,6 +29,12 @@ class FourthActivity : AppCompatActivity() {
         btnThird.setOnClickListener { goToSecondActivity()
 
         }
+
+        val title = findViewById<TextView>(R.id.textMad)
+        val story = findViewById<TextView>(R.id.textDescription)
+
+        title.text = characterName
+        story.text = descriptions.get(characterName)
     }
     fun goToSecondActivity(){
 
@@ -36,12 +42,6 @@ class FourthActivity : AppCompatActivity() {
         startActivity(thirdActivity)
     }
 
-    fun showCharacter(name: String){
-        val description = findViewById<TextView>(R.id.textDescription)
-        description.text = descriptions.get(name)
-        val image = findViewById<ImageView>(R.id.imageCharacter)
-        image.setImageResource(resources.getIdentifier(name, "drawable", packageName))
-    }
 
     fun setDescriptions() {
         descriptions.put("simple","Historia 1 I wannabe a <job> when I grow up.\n" +

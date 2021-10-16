@@ -10,7 +10,7 @@ import java.util.*
 
 class SecondActivity : AppCompatActivity() {
     val madHistory = arrayListOf<String>("Historia 1 Simple","Historia 2 Tarzan","Historia 3 University","Historia 4 Clothes","Historia 5 Dance",) //creamos el arreglo de datos
-    val madIds = arrayListOf<String>("Simple","Tarzan","University","Clothes","Dance")
+    val madIds = arrayListOf<String>("simple","tarzan","university","clothes","dance")
     var adapter: ArrayAdapter<String> ?= null
 
 
@@ -32,7 +32,11 @@ class SecondActivity : AppCompatActivity() {
         madListView.setOnItemClickListener{ listview, listitem, index, id ->
             println("item: $listitem, index: $index, id: $id")
             Toast.makeText(this, "Seleccionaste la historia ${madHistory[index]}", Toast.LENGTH_SHORT).show()
-            openFileInput(madIds[index])
+
+            val fourthActivityIntent = Intent(this, FourthActivity::class.java)
+            fourthActivityIntent.putExtra("story", madIds[index])
+            startActivity(fourthActivityIntent)
+
         }
 
         val btnAgregar = findViewById<Button>(R.id.btnAgregar)
