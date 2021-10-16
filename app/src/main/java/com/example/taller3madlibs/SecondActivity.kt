@@ -10,6 +10,7 @@ import java.util.*
 
 class SecondActivity : AppCompatActivity() {
     val madHistory = arrayListOf<String>("Historia 1 Simple","Historia 2 Tarzan","Historia 3 University","Historia 4 Clothes","Historia 5 Dance",) //creamos el arreglo de datos
+    val madIds = arrayListOf<String>("Simple","Tarzan","University","Clothes","Dance")
     var adapter: ArrayAdapter<String> ?= null
 
 
@@ -24,9 +25,8 @@ class SecondActivity : AppCompatActivity() {
         val btnRead = findViewById<Button>(R.id.btnRead)
         val btnThird = findViewById<Button>(R.id.btnThirdActivity)
 
-        val madIds = arrayListOf<String>("Simple","Tarzan","University","Clothes","Dance")
 
-        adapter = ThirdActivity(this, R.layout.activity_fourth, madHistory)
+        adapter = ThirdActivity(this, R.layout.activity_third, madHistory)
         val madListView = findViewById<ListView>(R.id.madList)
         madListView.adapter = adapter
         madListView.setOnItemClickListener{ listview, listitem, index, id ->
@@ -58,8 +58,8 @@ class SecondActivity : AppCompatActivity() {
     }
 
     fun goToThirdActivity(){
-        val thirdIntent = Intent(this, ThirdActivity::class.java)
-        thirdIntent.putExtra("MADLIB", "History")
+        val thirdIntent = Intent(this, FourthActivity::class.java)
+        thirdIntent.putExtra("CHARACTER", "simple")
         startActivity(thirdIntent)
     }
 

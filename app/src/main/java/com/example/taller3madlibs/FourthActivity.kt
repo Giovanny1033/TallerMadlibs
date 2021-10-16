@@ -16,14 +16,14 @@ class FourthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fourth)
 
-        if(intent.hasExtra("CHARACTER"))
-            characterName = intent.getStringExtra("CHARACTER")!!
 
         setDescriptions()
 
+        characterName = intent.getStringExtra("MadLIB")!!
+
         showCharacter(characterName)
 
-        val data = intent.getStringExtra("MadLIB")
+
 
         val btnThird = findViewById<Button>(R.id.btnThird)
         btnThird.setOnClickListener { goToSecondActivity()
