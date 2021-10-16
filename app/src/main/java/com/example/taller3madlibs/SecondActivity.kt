@@ -9,6 +9,10 @@ import java.io.PrintStream
 import java.util.*
 
 class SecondActivity : AppCompatActivity() {
+    val madHistory = arrayListOf<String>("Historia 1 Simple","Historia 2 Tarzan","Historia 3 University","Historia 4 Clothes","Historia 5 Dance",) //creamos el arreglo de datos
+    var adapter: ArrayAdapter<String> ?= null
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,11 +24,9 @@ class SecondActivity : AppCompatActivity() {
         val btnRead = findViewById<Button>(R.id.btnRead)
         val btnThird = findViewById<Button>(R.id.btnThirdActivity)
 
-        val madHistory = arrayListOf<String>("Historia 1 Simple","Historia 2 Tarzan","Historia 3 University","Historia 4 Clothes","Historia 5 Dance",) //creamos el arreglo de datos
         val madIds = arrayListOf<String>("Simple","Tarzan","University","Clothes","Dance")
-        var adapter: ArrayAdapter<String> ?= null
 
-        adapter = ThirdActivity(this, R.layout.activity_third, madHistory)
+        adapter = ThirdActivity(this, R.layout.activity_fourth, madHistory)
         val madListView = findViewById<ListView>(R.id.madList)
         madListView.adapter = adapter
         madListView.setOnItemClickListener{ listview, listitem, index, id ->
@@ -49,7 +51,7 @@ class SecondActivity : AppCompatActivity() {
 
         btnThird.setOnClickListener { goToThirdActivity() }
 
-       //actionBar!!.title = "Second Activity"
+        //actionBar!!.title = "Second Activity"
 
         //actionBar.setDisplayHomeAsUpEnabled(true)
 
